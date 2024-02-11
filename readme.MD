@@ -7,17 +7,17 @@
 - Start the server.
 
 # Commands
-## /deaths (Player)
+### /deaths (Player)
 - Show the number of deaths.
 
-## /set_deaths (Player) Amount
+### /set_deaths (Player) Amount
 - Set the amount of deaths for a player.
 
-## /death_id (Player) id
+### /death_id (Player) id
 - Show data of a death.
 
 
 # Examples
-## /deaths ctih
-## /set_deaths ctih 4
-## /death_id ctih 2
+### /deaths ctih
+### /set_deaths ctih 4
+### /death_id ctih 2
