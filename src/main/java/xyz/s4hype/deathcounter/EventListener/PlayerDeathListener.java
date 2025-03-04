@@ -13,42 +13,42 @@ public class PlayerDeathListener implements Listener {
 
     DeathCounter deathCounter;
     Player player;
-    String time;
+    int timesDied;
     String formattedNumber;
+
     public PlayerDeathListener() {
         deathCounter = DeathCounter.getInstance();
     }
+
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
-        Modify.init();
-        if(event != null && event.getEntity() != null) {
-            player = event.getEntity();
-            System.out.println(player.getDisplayName());
-            if(deathCounter==null) {
-                deathCounter = DeathCounter.getInstance();
-            }
-            time = deathCounter.getConfig().getString(String.valueOf(player.getUniqueId())+".amount");
-            if(time==null) {
-                time = "0";
-            }
-            formattedNumber = NumberFormat.addOrdinalSuffix(Integer.parseInt(time));
-            System.out.println(time);
-            deathCounter.getServer().broadcastMessage(" ");
-            deathCounter.getServer().broadcastMessage(String.format(
-                    "%s%s%s died: %s* %s *%s this is their %s%s%s time.",
-                    ChatColor.BOLD,
-                    player.getDisplayName(),
-                    ChatColor.RESET,
-                    ChatColor.ITALIC,
-                    event.getDeathMessage(),
-                    ChatColor.RESET,
-                    ChatColor.GOLD,
-                    formattedNumber,
-                    ChatColor.RESET
-                )
-            );
-            deathCounter.getServer().broadcastMessage(" ");
-            Modify.Increment(String.valueOf(player.getUniqueId()),1,event.getDeathMessage());
+        if(event == null || event.getEntity() == null ) {
+            return;
         }
+
+        Modify.init();
+
+        player = event.getEntity();
+
+        timesDied = deathCounter.getConfig().getInt(String.valueOf(player.getUniqueId())+".amount");
+
+        formattedNumber = NumberFormat.addOrdinalSuffix(timesDied);
+
+        deathCounter.getServer().broadcastMessage(" ");
+        deathCounter.getServer().broadcastMessage(String.format(
+                "%s%s%s died: %s* %s *%s this is their %s%s%s time.",
+                ChatColor.BOLD,
+                player.getDisplayName(),
+                ChatColor.RESET,
+                ChatColor.ITALIC,
+                event.getDeathMessage(),
+                ChatColor.RESET,
+                ChatColor.GOLD,
+                formattedNumber,
+                ChatColor.RESET
+            )
+        );
+
+        Modify.Increment(String.valueOf(player.getUniqueId()),1,event.getDeathMessage());
     }
 }

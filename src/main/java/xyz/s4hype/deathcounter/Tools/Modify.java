@@ -23,25 +23,19 @@ public class Modify {
         deathCounter.getConfig().set(UUID+"."+amount+".time",date);
         deathCounter.saveConfig();
     }
+
     public static void Increment(String UUID, int amount, String reason) {
-        if(deathCounter.getConfig().getString(UUID+".amount")==null) {
-            Set(UUID,amount,reason);
-            return;
-        }
-        newAmount = Integer.parseInt(deathCounter.getConfig().getString(UUID+".amount"));
+        newAmount = deathCounter.getConfig().getInt(UUID+".amount");
         newAmount += amount;
         Set(UUID,newAmount, reason);
     }
 
     public static int Get(String UUID) {
-        if(deathCounter.getConfig().getString(UUID+".amount")==null) {
-            return 0;
-        }
-        return Integer.parseInt(deathCounter.getConfig().getString(UUID+".amount"));
+        return deathCounter.getConfig().getInt(UUID+".amount");
     }
 
     public static String GetFromList(String UUID, int id) {
-        if(deathCounter.getConfig().getString(UUID+".amount")==null) {
+        if(deathCounter.getConfig().getInt(UUID+".amount") == 0) {
             return "None";
         }
         result = deathCounter.getConfig().getString(UUID+"."+id+".reason");

@@ -14,18 +14,22 @@ public class GetDeathFromID implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Modify.init();
+
         if(args.length!=0) {
             player = Bukkit.getPlayer(args[0]);
             id = Integer.parseInt(args[1]);
         }
+
         else {
             player = (Player) sender;
             id = Integer.parseInt(args[0]);
         }
+
         if(player==null) {
             sender.sendMessage(String.format("Invalid player %s'%s'%s", ChatColor.BOLD,args[0], ChatColor.RESET));
             return false;
         }
+
         sender.sendMessage(String.format("Death info of %s%s%s of id %s%s%s: %s",
                 ChatColor.BOLD,
                 player.getDisplayName(),

@@ -1,17 +1,28 @@
 name: DeathCounter
-version: '1.0-SNAPSHOT'
+version: '1.1'
 main: xyz.s4hype.deathcounter.DeathCounter
 
 commands:
   set_death:
     description: set the amount of deaths for a player.
-    usage: /set_death player amount
+    usage: /set player's death amount
     permission: xyz.s4hype.setdeath
+    aliases:
+      - set_death
+      - setdeath
   deaths:
     description: Get the amount of deaths of a player.
     usage: /deaths (player)
     permission: xyz.s4hype.getdeaths
+    aliases:
+      - get_deaths
+      - deaths
+      - death_amount
+      - deathamount
   death_id:
     description: Get the information of a specific death.
-    usage: /death_id (player) id
+    usage: /id (player) id
     permission: xyz.s4hype.getdeathid
+    aliases:
+      - death_id
+      - deathid

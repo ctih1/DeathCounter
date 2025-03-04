@@ -31,7 +31,6 @@ public class SetDeaths implements CommandExecutor {
         System.out.println(player.getDisplayName());
         System.out.println(amount);
         Modify.Set(String.valueOf(player.getUniqueId()),amount,"Manually added.");
-        sender.sendMessage(" ");
         sender.sendMessage(String.format(
                 "Set %s%s%s deaths to %s%s%s\n",
                 ChatColor.BOLD,
@@ -41,7 +40,6 @@ public class SetDeaths implements CommandExecutor {
                 amount,
                 ChatColor.RESET
         ));
-        sender.sendMessage(" ");
         return true;
     }
 }

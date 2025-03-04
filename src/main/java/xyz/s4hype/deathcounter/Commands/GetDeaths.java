@@ -23,11 +23,10 @@ public class GetDeaths implements CommandExecutor {
             player = (Player) sender;
         }
         if(player==null) {
-            sender.sendMessage(String.format("Invalid player %s'%s'%s",ChatColor.BOLD,args[0], ChatColor.RESET));
+            sender.sendMessage(String.format("%sInvalid player %s'%s'%s",ChatColor.RED,ChatColor.BOLD,args[0], ChatColor.RESET));
             return false;
         }
         amount = Modify.Get(String.valueOf(player.getUniqueId()));
-        sender.sendMessage(" ");
         sender.sendMessage(String.format(
                 "%s%s%s has died %s%s%s time(s)",
                 ChatColor.BOLD,
@@ -37,7 +36,6 @@ public class GetDeaths implements CommandExecutor {
                 NumberFormat.addOrdinalSuffix(amount),
                 ChatColor.RESET
         ));
-        sender.sendMessage(" ");
         return true;
     }
 }
